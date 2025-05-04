@@ -13,7 +13,7 @@ services:
     environment:
       - NODE_ENV=production
       - CINEMA_PORT=3001
-      - CINEMA_HOST=backend.cinema.err410.pw
+      - CINEMA_HOST=0.0.0.0
       - CINEMA_URL=https://cinema.err410.pw
     volumes:
       - ./movies:/app/movies
@@ -25,3 +25,4 @@ services:
       - NODE_ENV=production
       - API_ADDR=backend.cinema.err410.pw
       - API_PORT=443
+
