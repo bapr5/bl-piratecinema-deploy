@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  proxy:
+    image: caddy:latest
+    container_name: proxy
+    ports:
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+  backend:
+    image: bl-piratecinema:latest
+    container_name: backend
+    environment:
+      - NODE_ENV=production
+      - CINEMA_PORT=3001
+      - CINEMA_HOST=backend.cinema.err410.pw
+      - CINEMA_URL=https://cinema.err410.pw
+    volumes:
+      - ./movies:/app/movies
+  
+  frontend:
+    image: bl-piratecinema-frontend:latest
+    container_name: frontend
+    environment:
+      - NODE_ENV=production
+      - API_ADDR=backend.cinema.err410.pw
+      - API_PORT=443

@@ -1,0 +1,6 @@
+cinema.err410.pw {
+	reverse_proxy http://frontend:3000
+}
+backend.cinema.err410.pw {
+	reverse_proxy http://backend:3001
+}
